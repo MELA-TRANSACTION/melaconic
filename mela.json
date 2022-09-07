@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mela-business",
+  "private_key_id": "1414b084474b641e53447d6911f8bce43a2b743b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCxYZzjebSBzS73\nxJmZO6aot3wGYYn0GrOTk08NPxo7EpxCZOw+8/9oJB7wIV7+DtMrNJFXIPTmYJIJ\npjpNjTstpGNeHEg7URRUMFRkj5VPWggC69juSuiuOaSDmNlpdXdkpJA3II3A0r1d\nHFcNTwc0O/47X5E2LD+5Xb/KxzSb7MxWVz7qrgM1xy0U30d72jkqHShlvhod4rBO\nGFRDMejJkQJE9x7dAXzMoUb/cjgjKE4v0zSjsyzU9iK8yx/WgXZtjF9A0sHTuFYm\nFdtn9QOoSjr7N7XNQ1c93AJHN3Z+CDljEpPm4L7yObNY93I+7EigepKPwYl66uIt\nyFi2IWkTAgMBAAECggEASBX0xccckdGaYEuv5kOFJ7SlfQxfnWnKh9NKQYZe+RnH\nkf3kunK7XY2sWwcczR+mNr0+wYtdq1AcmTpKIGEgZxyS21igDCcXnV0kttdZJO3g\nKpvBRZoAtGktj+Nqm36G3ko4Z4bdxLqABVpykDCJK3OkDmn4n+zcms7cFiLdoO2u\nKWH8+ajxYVBSirgnv1gHBwR2U4DI9F0WLtc2tvBKdx2njsc41I70hxy2hkHWzvk7\nGc40keNADU1NbUodnCynBNOpvFnBgHugxmG7MyOhACm04Gm3XtTtR8RkyGn+kWdC\nmpUJvypCRSmYUAzS/6hQU7e1V+dkLpi9I32q6ESW6QKBgQDXGw1kElqDN9AvXTjh\nt9s9un4erZc4FsPZDOWU8ZldoAR9GOhUvoVB2sERAayrLxzXVQP8EG75dW3nn4rN\nWxbjSOAUoS4d2Xs/Vb6GhwH1HQBriY7u6sv0eVuwpcOMhli+0xzukv7+YyrCBMX6\nTy32PAofQJfVBTYVld/HfHjaGQKBgQDTGo7v9ghfXxUBfCBFypx4caFXbq1SKNHQ\nozZbKSOcO+lRMPi6oubQ/xSQ32O9HGokLVljpUHE+Xz8zwYh5BBemYYXzhkIelER\n5HV6iiLLEfbYJ/Q0OFxYp2izqjOpuhzpKe/YvXRnA707UMUi8WYEV8yYR9Euy8qr\nP0/oCUWaCwKBgQDPBzZoLlH3IOy56Vspw667RpbEKAb28NImQQdlxvH47l3jmOlj\nRssyirxvBdGOIJX9mdFv9NEaPy88Uo1hAF6S+jzRHiAoknzQhFIPYDk+FF+nIIn0\n4P7TmUnqRmBjC5q2brHV3JyXchJhEf8J3tM5vqdvVNfNKmrXc5whf2dBYQKBgAws\nNN/LXRI6xlhOkwHTPBCJ5NbIz/+z0N1p++FnzuDcZ4jB/SWt7QdSHhp4dyTZdZle\ncBAZ4F/+TuG5Ak6D+xmpWp0WykS94NzaQpftTTJOd+Bg9WjpcxG9nYD2qIH59F7R\nhz4FNqgWBBxefO+V4d8QPQDu6zX6lFYpkW780eGfAoGAe72kf4SCF8M1ruddBT6F\ntXFnNYwE/biw/vQ98bkjxEoxZr/55f7Oi2dqYJeioFk0Heb8+lA4eacvqQ6Vo+oH\n3vWPbeOI3Jnf1eJ1B31GFSxnzukQscHvwnrUSib0uQU6FtUzslWIRskdqgWkNRsZ\nrLPK/5k5SJy+xNp42ei8LtA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-qlf4c@mela-business.iam.gserviceaccount.com",
+  "client_id": "109204174621978139726",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-qlf4c%40mela-business.iam.gserviceaccount.com"
+}
