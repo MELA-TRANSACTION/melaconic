@@ -42,7 +42,8 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
+  margin-bottom: 1px;
 }
 
 .title,
@@ -51,9 +52,22 @@
 }
 
 .description {
-  margin: 4rem 0;
+  margin: 2rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+}
+.button{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #eeb20a;
+  color: rgb(0, 0, 0);
+  font:bold;
+  cursor: pointer;
+  outline: transparent;
+  border: 0;
+  border-radius: 10px;
 }
 
 .code {

@@ -1,0 +1,136 @@
+import prisma from "../../lib/prisma";
+import getUser from "../../utils/getUser";
+
+const transMutation = {
+  rechargeDistributor: async (_, { data }, { req }) => {
+    const { uid } = await getUser(req);
+    const sender = await prisma.user.findFirst({ where: { uid } });
+
+    //console.log("***************All done**************");
+    const receiver = await prisma.user.findFirst({
+      where: { phone: data.phoneReceiver },
+    });
+
+    if (sender && receiver) {
+      // console.log(sender.id, .receiverId);
+
+      if (sender.id === receiver.id) {
+        throw new Error("Impossible transaction same user");
+      }
+      const trans = await createTransaction(
+        sender,
+        receiver,
+        data,
+        "Recharge-Distributor"
+      );
+      return trans;
+    } else {
+      throw new Error("Unknown error");
+    }
+  },
+
+  rechargeClient: async (_, { data }, { req }) => {
+    const { uid } = await getUser(req);
+
+    const sender = await prisma.user.findFirst({ where: { uid } });
+
+    const receiver = await prisma.user.findFirst({
+      where: { phone: data.phoneReceiver },
+    });
+
+    //console.log("***************All done**************");
+    if (sender && receiver) {
+      console.log(sender.id, data.receiverId);
+
+      if (sender.id === receiver.id) {
+        throw new Error("Impossible transaction same user");
+      }
+      const trans = await createTransaction(
+        sender,
+        receiver,
+        data,
+        "Recharge-Client"
+      );
+      return trans;
+    } else {
+      throw new Error("Unknown error");
+    }
+  },
+  shareClient: async (_, { data }, { req }) => {
+    const { uid } = await getUser(req);
+
+    const sender = await prisma.user.findFirst({ where: { uid } });
+
+    //console.log("***************All done**************");
+    const receiver = await prisma.user.findFirst({
+      where: { phone: data.phoneReceiver },
+    });
+    if (sender && receiver) {
+      console.log(sender.id, data.receiverId);
+
+      if (sender.id === receiver.id) {
+        throw new Error("Impossible transaction same user");
+      }
+      const trans = await createTransaction(sender, receiver, data, "Share");
+      return trans;
+    } else {
+      throw new Error("Unknown error");
+    }
+  },
+  withdraw: async (_, { data }, { req }) => {
+    const { uid } = await getUser(req);
+
+    const sender = await prisma.user.findFirst({ where: { uid } });
+    const receiver = await prisma.user.findFirst({
+      where: { phone: data.phoneReceiver },
+    });
+
+    //console.log("***************All done**************");
+    if (sender && receiver) {
+      console.log(sender.id, data.receiverId);
+
+      if (sender.id === receiver.id) {
+        throw new Error("Impossible transaction same user");
+      }
+      const trans = await createTransaction(sender, receiver, data, "Withdraw");
+      return trans;
+    } else {
+      throw new Error("Unknown error");
+    }
+  },
+  cancelTrans: async (_, { id }) => {
+    return prisma.trans.update({ where: { id }, data: {} });
+  },
+};
+
+const createTransaction = async (sender, receiver, data, type) => {
+  const trans = await prisma.trans.create({
+    data: {
+      cost: data.cost,
+      amount: data.amount,
+      product: data.product || "Not provide",
+      transType: type,
+      senderRef: sender.id,
+      receiverRef: receiver.id,
+      status: "SEND",
+      owner: sender.uid,
+    },
+  });
+
+  await prisma.trans.create({
+    data: {
+      cost: data.cost,
+      amount: data.amount,
+      product: data.product,
+      transType: type,
+      senderRef: sender.id,
+      receiverRef: receiver.id,
+      status: "RECEIVE",
+      owner: receiver.uid,
+    },
+  });
+
+  return trans;
+};
+
+export default transMutation;
