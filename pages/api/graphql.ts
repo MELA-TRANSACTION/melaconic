@@ -29,7 +29,7 @@ import prisma from "../../lib/prisma";
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: false,
+  introspection: true,
 
   context,
   //formatError,
