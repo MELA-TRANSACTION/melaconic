@@ -34,7 +34,6 @@ export const typeDefs = gql`
   type Company {
     id: ID!
     name: String!
-    logo: String
     contacts: [String!]!
     phone: String!
     rccm: String
