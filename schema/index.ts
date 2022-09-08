@@ -35,7 +35,8 @@ export const typeDefs = gql`
     id: ID!
     name: String!
     logo: Float!
-    contacts: [String!]
+    contacts: [String!]!
+    phone: String!
     rccm: String
     transCost: Float
     idNat: String
@@ -91,6 +92,7 @@ export const typeDefs = gql`
     name: String!
     logo: Float!
     contacts: [String!]!
+    phone: String!
     rccm: String
     transCost: Float
     idNat: String
