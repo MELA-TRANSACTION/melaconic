@@ -13,7 +13,7 @@ export const typeDefs = gql`
     name: String!
     phone: String!
     roles: [String]!
-    balance: Money!
+    balance: Float!
     espace: Espace
     createdAt: Float
     transSended: [Trans!]!
