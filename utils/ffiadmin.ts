@@ -14,7 +14,7 @@ var serviceAccount = {
   client_x509_cert_url:
     "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-qlf4c%40mela-business.iam.gserviceaccount.com",
 };
-const p = JSON.parse(JSON.stringify(serviceAccount));
-const admin = initializeApp(p);
+
+const admin = initializeApp(JSON.parse(JSON.stringify(serviceAccount)));
 
 export default admin;
