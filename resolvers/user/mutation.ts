@@ -1,7 +1,6 @@
 import prisma from "../../lib/prisma";
 import admin from "../../utils/ffiadmin";
 import getUser from "../../utils/getUser";
-import { getAuth } from "firebase-admin/auth";
 
 const userMutation = {
   createUser: async (_, { data }, { req }) => {
@@ -16,7 +15,7 @@ const userMutation = {
     if (user) {
       throw new Error("User already exist");
     } else {
-      const fbUser = await getAuth(admin).createUser({
+      const fbUser = await admin.auth().createUser({
         displayName: data.name,
         phoneNumber: phone,
         email: phone + "@mela.com",
