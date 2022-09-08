@@ -29,6 +29,7 @@ const userMutation = {
           name: data.name,
           roles: data.roles,
           espace: data.espace,
+          balance: 0,
         },
       });
 

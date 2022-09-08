@@ -6,7 +6,6 @@ import companyMutation from "./company/mutation";
 import companyQuery from "./company/query";
 import { transField, transMutation, transQuery } from "./trans";
 import { userMutation, userQuery } from "./user";
-import userField from "./user/field";
 
 const resolvers = {
   Query: {
@@ -27,8 +26,6 @@ const resolvers = {
     //...productMutation,
     ...transMutation,
   },
-  //...opField,
-  ...userField,
   ...transField,
 };
 
