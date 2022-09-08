@@ -69,8 +69,3 @@ model Company {
   transCost Float    @default(0)
   phone     String   @unique
 }
-
-type Money {
-  amount   Float
-  currency String
-}

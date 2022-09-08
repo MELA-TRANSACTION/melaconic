@@ -47,7 +47,7 @@ export const typeDefs = gql`
     id: ID!
     sender: User!
     receiver: User!
-    amount: Money!
+    amount: Float!
     product: String
     transType: String!
     ref: String!
@@ -129,13 +129,8 @@ export const typeDefs = gql`
 
   input CreateTransInput {
     phoneReceiver: String!
-    amount: MoneyInput!
+    amount: Float!
     cost: Float!
     libele: String
-  }
-
-  input MoneyInput {
-    amount: Float!
-    currency: String!
   }
 `;
