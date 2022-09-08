@@ -133,20 +133,14 @@ const updateBalanceAccount = async (account, amount, type) => {
     await prisma.user.update({
       where: { id: account.id },
       data: {
-        balance: {
-          amount: account.balance - amount,
-          currency: "USD",
-        },
+        balance: account.balance - amount,
       },
     });
   } else {
     await prisma.user.update({
       where: { id: account.id },
       data: {
-        balance: {
-          amount: account.balance - amount,
-          currency: "USD",
-        },
+        balance: account.balance - amount,
       },
     });
   }
