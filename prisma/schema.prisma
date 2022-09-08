@@ -16,7 +16,7 @@ model User {
   uid           String   @unique
   name          String?
   avatar        String?
-  balance       Money?
+  balance       Float    @default(0)
   roles         String[]
   address       Address?
   espace        Espace?
