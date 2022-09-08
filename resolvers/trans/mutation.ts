@@ -17,6 +17,13 @@ const transMutation = {
       if (sender.id === receiver.id) {
         throw new Error("Impossible transaction same user");
       }
+
+      if (sender.balance < data.amount + data.cost) {
+        throw new Error("Balance insuffisante");
+      }
+
+      await updateBalanceAccount(sender, data.amount, "SENDER");
+      await updateBalanceAccount(sender, data.amount, "RECEIVER");
       const trans = await createTransaction(
         sender,
         receiver,
@@ -40,11 +47,17 @@ const transMutation = {
 
     //console.log("***************All done**************");
     if (sender && receiver) {
-      console.log(sender.id, data.receiverId);
+      //console.log(sender.id, data.receiverId);
 
       if (sender.id === receiver.id) {
         throw new Error("Impossible transaction same user");
       }
+      if (sender.balance < data.amount + data.cost) {
+        throw new Error("Balance insuffisante");
+      }
+
+      await updateBalanceAccount(sender, data.amount, "SENDER");
+      await updateBalanceAccount(sender, data.amount, "RECEIVER");
       const trans = await createTransaction(
         sender,
         receiver,
@@ -66,11 +79,17 @@ const transMutation = {
       where: { phone: data.phoneReceiver },
     });
     if (sender && receiver) {
-      console.log(sender.id, data.receiverId);
+      // console.log(sender.id, data.receiverId);
 
       if (sender.id === receiver.id) {
         throw new Error("Impossible transaction same user");
       }
+      if (sender.balance < data.amount + data.cost) {
+        throw new Error("Balance insuffisante");
+      }
+
+      await updateBalanceAccount(sender, data.amount, "SENDER");
+      await updateBalanceAccount(sender, data.amount, "RECEIVER");
       const trans = await createTransaction(sender, receiver, data, "Share");
       return trans;
     } else {
@@ -81,17 +100,23 @@ const transMutation = {
     const { uid } = await getUser(req);
 
     const sender = await prisma.user.findFirst({ where: { uid } });
+
     const receiver = await prisma.user.findFirst({
       where: { phone: data.phoneReceiver },
     });
 
     //console.log("***************All done**************");
     if (sender && receiver) {
-      console.log(sender.id, data.receiverId);
-
       if (sender.id === receiver.id) {
         throw new Error("Impossible transaction same user");
       }
+
+      if (sender.balance < data.amount + data.cost) {
+        throw new Error("Balance insuffisante");
+      }
+
+      await updateBalanceAccount(sender, data.amount, "SENDER");
+      await updateBalanceAccount(sender, data.amount, "RECEIVER");
       const trans = await createTransaction(sender, receiver, data, "Withdraw");
       return trans;
     } else {
@@ -101,6 +126,30 @@ const transMutation = {
   cancelTrans: async (_, { id }) => {
     return prisma.trans.update({ where: { id }, data: {} });
   },
+};
+
+const updateBalanceAccount = async (account, amount, type) => {
+  if (type == "SENDER") {
+    await prisma.user.update({
+      where: { id: account.id },
+      data: {
+        balance: {
+          amount: account.balance - amount,
+          currency: "USD",
+        },
+      },
+    });
+  } else {
+    await prisma.user.update({
+      where: { id: account.id },
+      data: {
+        balance: {
+          amount: account.balance - amount,
+          currency: "USD",
+        },
+      },
+    });
+  }
 };
 
 const createTransaction = async (sender, receiver, data, type) => {

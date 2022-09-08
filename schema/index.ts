@@ -1,4 +1,4 @@
-import { gql } from "apollo-server";
+import { gql } from "apollo-server-micro";
 
 export const typeDefs = gql`
   scalar Date
@@ -31,14 +31,15 @@ export const typeDefs = gql`
     street: String
   }
 
-  type Product {
+  type Company {
     id: ID!
     name: String!
-    price: Float!
-    format: String
-    typeTrans: String
-    ref: String
-    quantity: Int
+    logo: Float!
+    contacts: [String!]
+    rccm: String
+    transCost: Float
+    idNat: String
+    banner: String
   }
 
   type Trans {
@@ -59,14 +60,12 @@ export const typeDefs = gql`
     user(uid: String!): User
 
     # trans query
-    getBalance(uid: ID!): Money!
     allTrans(uid: ID): [Trans!]!
     myTrans(id: ID): [Trans!]!
     trans(id: ID!): Trans
 
     #product query
-    products: [Product!]!
-    product(id: ID!): Product!
+    company: Company!
   }
 
   #### Mutation for Create/Update/Delete data
@@ -84,10 +83,18 @@ export const typeDefs = gql`
     cancelTrans(id: ID!): Trans
     archiveTrans(id: ID!): Trans
 
-    # product
-    createProduct(data: CreateProductInput!): Product!
-    updateProduct(id: ID!, data: UpdateProductInput!): Product!
-    deleteProduct(id: ID!): Boolean!
+    # create company
+    createCompany(data: CreateCompanyInput!): Company!
+  }
+
+  input CreateCompanyInput {
+    name: String!
+    logo: Float!
+    contacts: [String!]!
+    rccm: String
+    transCost: Float
+    idNat: String
+    banner: String
   }
 
   input CreateUserInput {
@@ -128,17 +135,5 @@ export const typeDefs = gql`
   input MoneyInput {
     amount: Float!
     currency: String!
-  }
-
-  input CreateProductInput {
-    name: String!
-    price: Float!
-    format: String
-  }
-
-  input UpdateProductInput {
-    name: String
-    price: Float
-    format: String
   }
 `;

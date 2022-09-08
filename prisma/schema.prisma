@@ -16,6 +16,7 @@ model User {
   uid           String   @unique
   name          String?
   avatar        String?
+  balance       Money?
   roles         String[]
   address       Address?
   espace        Espace?
@@ -52,6 +53,18 @@ model Trans {
   senderRef   String   @db.ObjectId
   receiverRef String   @db.ObjectId
   owner       String
+}
+
+model Company {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  address   String?
+  contacts  String[]
+  banner    String?
+  logo      String?
+  rccm      String?
+  idNat     String?
+  transCost Float    @default(0)
 }
 
 type Money {
