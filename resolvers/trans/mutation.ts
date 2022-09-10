@@ -23,7 +23,7 @@ const transMutation = {
       }
 
       await updateBalanceAccount(sender, data.amount, "SENDER");
-      await updateBalanceAccount(sender, data.amount, "RECEIVER");
+      await updateBalanceAccount(receiver, data.amount, "RECEIVER");
       const trans = await createTransaction(
         sender,
         receiver,
@@ -57,7 +57,7 @@ const transMutation = {
       }
 
       await updateBalanceAccount(sender, data.amount, "SENDER");
-      await updateBalanceAccount(sender, data.amount, "RECEIVER");
+      await updateBalanceAccount(receiver, data.amount, "RECEIVER");
       const trans = await createTransaction(
         sender,
         receiver,
@@ -89,7 +89,7 @@ const transMutation = {
       }
 
       await updateBalanceAccount(sender, data.amount, "SENDER");
-      await updateBalanceAccount(sender, data.amount, "RECEIVER");
+      await updateBalanceAccount(receiver, data.amount, "RECEIVER");
       const trans = await createTransaction(sender, receiver, data, "Share");
       return trans;
     } else {
@@ -116,7 +116,7 @@ const transMutation = {
       }
 
       await updateBalanceAccount(sender, data.amount, "SENDER");
-      await updateBalanceAccount(sender, data.amount, "RECEIVER");
+      await updateBalanceAccount(receiver, data.amount, "RECEIVER");
       const trans = await createTransaction(sender, receiver, data, "Withdraw");
       return trans;
     } else {
@@ -140,7 +140,7 @@ const updateBalanceAccount = async (account, amount, type) => {
     await prisma.user.update({
       where: { id: account.id },
       data: {
-        balance: account.balance - amount,
+        balance: account.balance + amount,
       },
     });
   }
