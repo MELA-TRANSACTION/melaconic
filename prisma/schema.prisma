@@ -43,7 +43,7 @@ type Address {
 
 model Trans {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  product     String?
+  message     String?
   amount      Float    @default(0)
   cost        Float    @default(0)
   sender      User     @relation(fields: [senderRef], references: [id], name: "senderRef")

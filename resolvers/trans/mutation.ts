@@ -151,7 +151,7 @@ const createTransaction = async (sender, receiver, data, type) => {
     data: {
       cost: data.cost,
       amount: data.amount,
-      product: data.product || "Not provide",
+      message: data.message || "Not provide",
       transType: type,
       senderRef: sender.id,
       receiverRef: receiver.id,
@@ -164,7 +164,7 @@ const createTransaction = async (sender, receiver, data, type) => {
     data: {
       cost: data.cost,
       amount: data.amount,
-      product: data.product,
+      message: data.message || "Not provide",
       transType: type,
       senderRef: sender.id,
       receiverRef: receiver.id,

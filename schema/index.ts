@@ -44,7 +44,7 @@ export const typeDefs = gql`
     sender: User!
     receiver: User!
     amount: Float!
-    product: String
+    message: String
     transType: String!
     ref: String!
     cost: Float!
@@ -127,6 +127,6 @@ export const typeDefs = gql`
     phoneReceiver: String!
     amount: Float!
     cost: Float!
-    libele: String
+    message: String
   }
 `;
