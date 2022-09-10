@@ -51,6 +51,14 @@ export const typeDefs = gql`
     createdAt: Float!
     owner: String!
   }
+
+  type City {
+    id: ID!
+    name: String!
+    isActive: Boolean!
+    createdAt: Float!
+    updatedAt: Float!
+  }
   type Query {
     # users query
     users: [User!]!
@@ -63,6 +71,10 @@ export const typeDefs = gql`
 
     #product query
     company: Company!
+
+    #city query
+    cities: [City!]!
+    city(id: ID!): City
   }
 
   #### Mutation for Create/Update/Delete data
@@ -82,6 +94,11 @@ export const typeDefs = gql`
 
     # create company
     createCompany(data: CreateCompanyInput!): Company!
+
+    #city mutations
+    createCity(name: String!): City!
+    updateCity(id: ID!, name: String, isActive: Boolean): City!
+    deleteCity(id: ID!): Boolean!
   }
 
   input CreateCompanyInput {
