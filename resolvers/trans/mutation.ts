@@ -6,6 +6,10 @@ const transMutation = {
     const { uid } = await getUser(req);
     const sender = await prisma.user.findFirst({ where: { uid } });
 
+    if (!sender.roles.includes("admin")) {
+      throw new Error("Vous n'etes pas authoriser pour cette operation");
+    }
+
     //console.log("***************All done**************");
     const receiver = await prisma.user.findFirst({
       where: { phone: data.phoneReceiver },
@@ -40,6 +44,10 @@ const transMutation = {
     const { uid } = await getUser(req);
 
     const sender = await prisma.user.findFirst({ where: { uid } });
+
+    if (!sender.roles.includes("seller")) {
+      throw new Error("Vous n'etes pas authoriser pour cette operation");
+    }
 
     const receiver = await prisma.user.findFirst({
       where: { phone: data.phoneReceiver },
@@ -78,6 +86,15 @@ const transMutation = {
     const receiver = await prisma.user.findFirst({
       where: { phone: data.phoneReceiver },
     });
+
+    if (!sender.roles.includes("client")) {
+      throw new Error("Vous n'etes pas authoriser pour cette operation");
+    }
+
+    if (!receiver.roles.includes("client")) {
+      throw new Error("Votre destinateur n'est pas valide");
+    }
+
     if (sender && receiver) {
       // console.log(sender.id, data.receiverId);
 
@@ -104,6 +121,10 @@ const transMutation = {
     const receiver = await prisma.user.findFirst({
       where: { phone: data.phoneReceiver },
     });
+
+    if (!receiver.roles.includes("seller")) {
+      throw new Error("Votre destinateur n'est pas valide");
+    }
 
     //console.log("***************All done**************");
     if (sender && receiver) {

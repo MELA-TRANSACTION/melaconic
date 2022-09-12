@@ -63,6 +63,7 @@ export const typeDefs = gql`
     # users query
     users: [User!]!
     user(uid: String!): User
+    sellers: [User!]!
 
     # trans query
     allTrans(uid: ID): [Trans!]!
@@ -83,6 +84,7 @@ export const typeDefs = gql`
     createUser(data: CreateUserInput!): User
     updateUser(id: ID!, data: UpdateUserInput!): User
     deleteUser(id: ID!): Boolean
+    changePassword(password: String!): Boolean!
 
     # Trans
     rechargeDistributor(data: CreateTransInput!): Trans!

@@ -46,6 +46,11 @@ const userMutation = {
 
     return user ? true : false;
   },
+  changePassword: async (_, { password }, { req }) => {
+    const { uid } = await getUser(req);
+    await admin.auth().updateUser(uid, { password: password });
+    return true;
+  },
 };
 
 export default userMutation;
